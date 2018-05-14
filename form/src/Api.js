@@ -9,9 +9,9 @@ class PatientsApi {
     return res.data || [];
   }
 
-  createPatient = async(order) => {
+  createPatient = async() => {
     try {
-      let res = await axios.post(this.url);
+      let res = await axios.post(apiUrl);
       return res.data || {};
     } catch(error) {
       alert('Error creating patient:' + error);

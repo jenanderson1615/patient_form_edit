@@ -1,15 +1,18 @@
 import React from 'react';
-import { TextField, Button, FormGroup } from 'material-ui';
+import { TextField, Button, FormGroup, } from 'material-ui';
 import FormFields from '../formmodel/FormFields';
 import FormModel from './FormModel';
 
 class NewPatientForm extends React.Component {
 
+    save = (e) => {
+        this.props.store.saveNewPatient();
+    }
+
     // ------------------------------------------------------
     render() {
         return (
             <form onSubmit={this.save}>
-
                 <FormFields
                     inputs={FormModel}
                     parentOnChange={this.onChange} />

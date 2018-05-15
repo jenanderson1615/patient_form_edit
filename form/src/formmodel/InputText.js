@@ -3,15 +3,16 @@ import TextField from 'material-ui/TextField';
 
 const InputText = ({ input, value, onChange }) => {
   return (
-    <TextField
+    <div>
+      <TextField
         onChange={onChange}
         error={input.hasError}
         key={input.name}
         margin="normal"
-        fullWidth
         label={input.label}
         name={input.name}
         value={value} />
+    </div>
   )
 }
 

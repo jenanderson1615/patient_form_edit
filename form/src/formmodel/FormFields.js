@@ -17,7 +17,7 @@ const FormFields = ({ inputs, data, parentOnChange }) => {
 
   return inputs.map(i => {
 
-    let value = "Fred";
+    let value = "";
    
     switch (i.type) {
       case 'checkbox':

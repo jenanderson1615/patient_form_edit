@@ -36,19 +36,23 @@ app.route('/patients')
         })
     })
 
-    .post(function(req, res) {
+    .post(function (req, res) {
         connection.connect(function (err) {
             if (err) {
                 console.log(err);
             }
-            connection.query("INSERT INTO patient (person_id) VALUES (18)", function (err, result, fields) {
-                if (err) throw err;
-                res.send(JSON.stringify({
-                    "status": 200,
-                    "error": null,
-                    "response": result
-                }));
-            });
+            var myQuery = "INSERT INTO person(first, last, salute, suffix, maiden, nickname, birthday, pop_sex, phone1, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            var newData = [req.body.first,req.body.last,req.body.salute,req.body.suffix,req.body.maiden,req.body.nickname,req.body.birthday,req.body.pop_sex,req.body.phone1,req.body.email];
+            connection.query(myQuery,
+                newData,
+                function (err, result, fields) {   
+                    if (err) throw err;
+                    res.send(JSON.stringify({
+                        "status": 200,
+                        "error": null,
+                        "response": result
+                    }));
+                });
         })
     });
 

@@ -9,8 +9,8 @@ class NewPatientForm extends React.Component {
         this.props.store.saveNewPatient();
     }
 
-    onChange = (e) => {
-        console.log("prevent crash");
+    onChange = (key,val) => {
+        this.props.store.changeField(key,val);
     }
 
     // ------------------------------------------------------
@@ -19,6 +19,7 @@ class NewPatientForm extends React.Component {
             <form onSubmit={this.save}>
                 <FormFields
                     inputs={FormModel}
+                    data={this.props.store}
                     parentOnChange={this.onChange} />
 
                 <FormControl style={{display:'block'}}>

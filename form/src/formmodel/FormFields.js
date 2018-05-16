@@ -16,9 +16,9 @@ const FormFields = ({ inputs, data, parentOnChange }) => {
   }
 
   return inputs.map(i => {
+    
+    let value = data[i.name];
 
-    let value = "";
-   
     switch (i.type) {
       case 'checkbox':
         return <InputCheckbox input={i} value={value} parentOnChange={onChange} />

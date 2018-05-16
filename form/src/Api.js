@@ -29,7 +29,7 @@ class PatientsApi {
           apiUrl,qs.stringify(data))
       return res.data || {};
     } catch(error) {
-      alert('Error creating patient:' + error);
+      console.log('Error creating patient:' + error);
     }
   }
 }

@@ -6,11 +6,10 @@ const PatientModel = types
         patientId: types.maybe(types.number),
         first_name: types.maybe(types.string),
         last_name: types.maybe(types.string),
-        prefix: types.maybe(types.string),
+        salute: types.maybe(types.string),
         suffix: types.maybe(types.string),
         maiden_name: types.maybe(types.string),
         nickname: types.maybe(types.string),
-        birth_date: types.maybe(types.string),
         sex: types.maybe(types.string)
     })
     .actions(self => ({

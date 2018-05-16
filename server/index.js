@@ -39,8 +39,8 @@ app.route('/patients')
     })
 
     .post(function (req, res) {
-        var myQuery = "INSERT INTO person(first, last, salute, suffix, maiden, nickname, birthday, pop_sex, phone1, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        var newData = [req.body.first, req.body.last, req.body.salute, req.body.suffix, req.body.maiden, req.body.nickname, req.body.birthday, req.body.pop_sex, req.body.phone1, req.body.email];
+        var myQuery = "INSERT INTO person(first, last, salute, suffix, maiden, nickname, pop_sex) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        var newData = [req.body.first, req.body.last, req.body.salute, req.body.suffix, req.body.maiden, req.body.nickname, req.body.pop_sex];
         connection.query(myQuery,
             newData,
             function (err, result, fields) {

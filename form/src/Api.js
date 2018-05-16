@@ -10,19 +10,17 @@ class PatientsApi {
     return res.data || [];
   }
 
-  createPatient = async() => {
+  createPatient = async(PatientModel) => {
     const data = {
-      "first": "Fred",
-      "last": "test",
-      "salute": "Mr.",
-      "suffix": "B.",
-      "maiden": "Anderson",
-      "nickname": "Jen",
-      "birthday": "2018-05-15T15:32:27.635Z",
-      "pop_sex": "1",
-      "phone1": "402-430-3537",
-      "email": "cool@gmail.com"
+      "first": PatientModel.first_name,
+      "last": PatientModel.last_name,
+      "salute": PatientModel.prefix,
+      "suffix": PatientModel.suffix,
+      "maiden": PatientModel.maiden,
+      "nickname": PatientModel.nickname,
+      "pop_sex": PatientModel.sex,
     };
+    console.log(data);
       
     try {
       let res = await axios.post(

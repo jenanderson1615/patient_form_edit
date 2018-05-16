@@ -18,7 +18,7 @@ const FormModel = [
       required: false
     },
     {
-      name: 'Suffix',
+      name: 'suffix',
       label: 'Suffix',
       type: 'text',
       required: false
@@ -32,12 +32,6 @@ const FormModel = [
     {
       name: 'nickname',
       label: 'Nickname',
-      type: 'text',
-      required: false
-    },
-    {
-      name: 'birthdate',
-      label: 'Birth Date',
       type: 'text',
       required: false
     },

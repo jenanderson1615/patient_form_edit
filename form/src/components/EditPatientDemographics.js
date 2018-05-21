@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField, Button, FormGroup, FormControl, } from 'material-ui';
 import FormFields from '../formmodel/FormFields';
-import FormModel from './FormModel';
+import PatientDemographicFields from '../formmodel/PatientDemographicFields';
 
 class NewPatientForm extends React.Component {
 
@@ -18,9 +18,10 @@ class NewPatientForm extends React.Component {
         return (
             <form onSubmit={this.save}>
                 <FormFields
-                    inputs={FormModel}
+                    inputs={PatientDemographicFields}
                     data={this.props.store}
-                    parentOnChange={this.onChange} />
+                    parentOnChange={this.onChange} 
+                    canEdit={true}/>
 
                 <FormControl style={{display:'block'}}>
                     <Button

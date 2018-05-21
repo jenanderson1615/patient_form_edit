@@ -53,6 +53,19 @@ app.route('/patients')
             });
     });
 
+app.route('/patients/:patientId')
+    .get(function (req, res) {
+        var patientId = req.params.patientId;
+        connection.query("select person.*, patient.patient_id from patient, person where patient.person_id = person.person_id AND patient.patient_id = ?", patientId, function (err, result, fields) {
+            if (err) throw err;
+            res.send(JSON.stringify({
+                "status": 200,
+                "error": null,
+                "response": result
+            }));
+        });
+    })
+
 app.listen(port, function () {
     console.log("Express server running on port %d", port);
 });

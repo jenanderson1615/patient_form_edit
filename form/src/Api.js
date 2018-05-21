@@ -5,20 +5,24 @@ const apiUrl = 'http://localhost:9009/patients';
 
 class PatientsApi {
 
-  fetchPatients = async() => {
-    let res = await axios.get(this.url);
-    return res.data || [];
+  fetchPatients = async () => {
+    try {
+      let res = await axios.get('http://localhost:9009/patients/6');
+      return res.data || [];
+    } catch (error) {
+      console.log('Error fetching patient:' + error);
+    }
+
   }
 
   createPatient = async(PatientModel) => {
     const data = {
-      "first": PatientModel.first_name,
-      "last": PatientModel.last_name,
+      "first": PatientModel.first,
+      "last": PatientModel.last,
       "salute": PatientModel.prefix,
       "suffix": PatientModel.suffix,
       "maiden": PatientModel.maiden,
-      "nickname": PatientModel.nickname,
-      "pop_sex": PatientModel.sex,
+      "nickname": PatientModel.nickname
     };
     console.log(data);
       

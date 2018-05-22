@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
-       <ViewPatientDemographics store={this.props}/>
+       <ViewPatientDemographics patient={this.props}/>
        <Button>Edit Patient Demographics</Button>
        <Button>Create New Patient</Button>
       </div>

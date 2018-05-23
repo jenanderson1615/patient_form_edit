@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import EditPatientDemographics from './components/EditPatientDemographics';
 import PatientModel from './store/PatientModel';
@@ -26,7 +25,7 @@ class App extends Component {
           <div>
             <ViewPatientDemographics patient={this.props}  />
             <Button onClick={this.toggleForm}>Create New Patient</Button>
-            <Button>Edit Patient Demographics</Button>
+            <Button onClick={this.toggleForm}>Edit Patient Demographics</Button>
           </div>
         }
       

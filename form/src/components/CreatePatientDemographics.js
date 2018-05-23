@@ -8,10 +8,15 @@ class CreatePatientDemographics extends React.Component {
     save = (e) => {
         e.preventDefault();
         this.props.store.patient.saveNewPatient();
+        this.props.onFormClose();
     }
 
     onChange = (key,val) => {
         this.props.store.patient.changeField(key,val);
+    }
+
+    toggleForm = () => {
+        this.props.onFormClose();
     }
 
     // ------------------------------------------------------
@@ -26,16 +31,17 @@ class CreatePatientDemographics extends React.Component {
 
                 <FormControl style={{display:'block'}}>
                     <Button
+                        onClick={this.toggleForm}
                         type="cancel"
                         variant="raised"
                         color="primary"
-                        style={{width:500}}>Cancel
+                        style={{width:300}}>Cancel
                     </Button>
                     <Button
                         type="submit"
                         variant="raised"
                         color="primary"
-                        style={{width:500}}>Save
+                        style={{width:300}}>Save
                     </Button>
                 </FormControl>
             </form>

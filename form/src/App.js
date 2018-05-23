@@ -10,15 +10,27 @@ import CreatePatientDemographics from './components/CreatePatientDemographics';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showForm: false
+    }
+  }
+
+  toggleForm = () => {
+    this.setState({ showForm: !this.state.showForm });
   }
 
   render() {
     return (
       <div>
-       <ViewPatientDemographics patient={this.props}/>
-       <Button>Edit Patient Demographics</Button>
-       <Button>Create New Patient</Button>
-       <CreatePatientDemographics store={this.props}/>
+        {!this.state.showForm &&
+          <div>
+            <ViewPatientDemographics patient={this.props}  />
+            <Button onClick={this.toggleForm}>Create New Patient</Button>
+            <Button>Edit Patient Demographics</Button>
+          </div>
+        }
+      
+        {this.state.showForm && <CreatePatientDemographics store={this.props} onFormClose={this.toggleForm}/>}
       </div>
     );
   }

@@ -3,14 +3,15 @@ import { TextField, Button, FormGroup, FormControl, } from 'material-ui';
 import FormFields from '../formmodel/FormFields';
 import PatientDemographicFields from '../formmodel/PatientDemographicFields';
 
-class EditPatientDemographics extends React.Component {
+class CreatePatientDemographics extends React.Component {
 
     save = (e) => {
-        this.props.store.saveNewPatient();
+        e.preventDefault();
+        this.props.store.patient.saveNewPatient();
     }
 
     onChange = (key,val) => {
-        this.props.store.changeField(key,val);
+        this.props.store.patient.changeField(key,val);
     }
 
     // ------------------------------------------------------
@@ -42,4 +43,4 @@ class EditPatientDemographics extends React.Component {
     }
 
 }
-export default EditPatientDemographics;
+export default CreatePatientDemographics;

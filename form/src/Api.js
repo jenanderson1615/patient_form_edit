@@ -7,7 +7,7 @@ class PatientsApi {
 
   fetchPatients = async () => {
     try {
-      let res = await axios.get('http://localhost:9009/patients/6');
+      let res = await axios.get('http://localhost:9009/patients/5');
       return res.data || [];
     } catch (error) {
       console.log('Error fetching patient:' + error);
@@ -24,7 +24,6 @@ class PatientsApi {
       "maiden": PatientModel.maiden,
       "nickname": PatientModel.nickname
     };
-    console.log(data);
       
     try {
       let res = await axios.post(

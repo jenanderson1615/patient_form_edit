@@ -2,6 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 const apiUrl = 'http://localhost:9009/patients';
+axios.defaults.headers.common['withCredentials'] = true;
 
 class PatientsApi {
 

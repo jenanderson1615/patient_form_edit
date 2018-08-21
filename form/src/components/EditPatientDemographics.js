@@ -1,45 +1,61 @@
-import React from 'react';
-import { TextField, Button, FormGroup, FormControl, } from 'material-ui';
-import FormFields from '../formmodel/FormFields';
-import PatientDemographicFields from '../formmodel/PatientDemographicFields';
+import React, { Component } from "react";
+import FormBuilder from "../form-builder/";
+import DemographicFormModel from "../store/DemographicFormModel";
 
-class EditPatientDemographics extends React.Component {
+class PatientEditPage extends Component {
+  componentWillMount() {
+    this.removeProviderOfficeFeeSchedule();
+  }
 
-    save = (e) => {
-        this.props.store.saveNewPatient();
+  removeProviderOfficeFeeSchedule() {
+    var fieldData = DemographicFormModel.find(m => m.name === "accountProviderId");
+    fieldData.hidden = true;
+
+    fieldData = DemographicFormModel.find(m => m.name === "patientProviderId");
+    fieldData.hidden = true;
+
+    fieldData = DemographicFormModel.find(m => m.name === "officeId");
+    fieldData.hidden = true;
+
+    fieldData = DemographicFormModel.find(m => m.name === "feeScheduleId");
+    fieldData.hidden = true;
+  }
+
+  onChange = (key, val) => {
+    this.props.patient.update(key, val);
+  };
+
+  editPageSubmit = async event => {
+    if (event.target.name == "PatientEdit") {
+      await this.props.patient.updatePatient();
+      this.props.parentCallBack(this.props.patient);
     }
+  };
 
-    onChange = (key,val) => {
-        this.props.store.changeField(key,val);
-    }
+  onCancel = () => {
+    this.props.parentCallBack();
+  };
 
-    // ------------------------------------------------------
-    render() {
-        return (
-            <form onSubmit={this.save}>
-                <FormFields
-                    inputs={PatientDemographicFields}
-                    data={this.props.store}
-                    parentOnChange={this.onChange} 
-                    canEdit={true}/>
+  fixBirthdate() {
+    this.props.patient.fixBirthdate();
+  }
 
-                <FormControl style={{display:'block'}}>
-                    <Button
-                        type="cancel"
-                        variant="raised"
-                        color="primary"
-                        style={{width:500}}>Cancel
-                    </Button>
-                    <Button
-                        type="submit"
-                        variant="raised"
-                        color="primary"
-                        style={{width:500}}>Save
-                    </Button>
-                </FormControl>
-            </form>
-        )
-    }
+  render() {
+    this.fixBirthdate();
 
+    return (
+      <div>
+        <FormBuilder
+          data={this.props.patient}
+          formModel={DemographicFormModel}
+          parentOnChange={this.onChange}
+          parentOnSubmit={this.editPageSubmit}
+          parentOnCancel={this.onCancel}
+          formName={"PatientEdit"}
+        />
+      </div>
+    );
+  }
 }
-export default EditPatientDemographics;
+
+export default PatientEditPage;
